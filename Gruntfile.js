@@ -3,11 +3,33 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		uglify: {
-		build: {
-			src: 'js/perfmatters.js',
-			dest: 'js/permatters.min.js'
-			},
+			build: {
+				src: 'js/perfmatters.js',
+				dest: 'js/permatters.min.js'
+				},
 
+		},
+
+		cssmin: {
+		   dist: {
+		      files: {
+		         'dist/css/style.min.css': ['css/style.css']
+		      }
+		  }
+		}, 
+
+		htmlmin: {
+		   dist: {
+		      options: {
+		         removeComments: true,
+		         collapseWhitespace: true
+		      },
+		      files: [{
+		         expand: true,
+		         src: 'index.html',
+		         dest: 'dist/'
+		      }]
+		   }
 		},
 
 		imagemin: {
@@ -25,6 +47,8 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.registerTask('default', ['imagemin', 'uglify']);
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');
+	grunt.registerTask('default', ['imagemin', 'uglify', 'htmlmin', 'cssmin']);
 
 };
