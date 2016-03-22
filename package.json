@@ -1,7 +1,30 @@
 {
-	"name": "frontend-nanodegree-mobile-portfolio", 
-	"version": "0.1.0", 
-	"devDependencies":{
-		"grunt": "~0.4.1",
-	}
+  "name": "fnmp",
+  "version": "1.0.0",
+  "description": "portfolio-json",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-pagespeed": "^2.0.0",
+    "install": "^0.6.1",
+    "load-grunt-tasks": "^3.4.1",
+    "ngrok": "^2.1.6",
+    "npm": "^3.8.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhackelman/frontend-nanodegree-mobile-portfolio.git"
+  },
+  "author": "Drew Hackelman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhackelman/frontend-nanodegree-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/dhackelman/frontend-nanodegree-mobile-portfolio#readme"
 }
