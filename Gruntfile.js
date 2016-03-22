@@ -33,12 +33,12 @@ module.exports = function(grunt) {
 		},
 
 		imagemin: {
-			dynamic: {                         // Another target 
+			dynamic: {                         
 			      files: [{
-			        expand: true,                  // Enable dynamic expansion 
-			        cwd: 'img',                   // Src matches are relative to this path 
-			        src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match 
-			        dest: 'img'                  // Destination path prefix 
+			        expand: true,                  
+			        cwd: 'img',                   
+			        src: ['**/*.{png,jpg,gif}'],   
+			        dest: 'img'                  
 			      }]
 			    }
 
