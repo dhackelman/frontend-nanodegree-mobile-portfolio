@@ -286,11 +286,14 @@ var adjectives = ["dark", "color", "whimsical", "shiny", "noise", "apocalyptic",
 var nouns = ["animals", "everyday", "fantasy", "gross", "horror", "jewelry", "places", "scifi"];                        // types of nouns for pizza titles
 
 // Generates random numbers for getAdj and getNoun functions and returns a new pizza name
+// Add adjLength and nounsLength variables to remove extra calculations within the generator function
+var adjLength = adjectives.length;
+var nounsLength = nouns.length;
 function generator(adj, noun) {
   var adjectives = getAdj(adj);
   var nouns = getNoun(noun);
-  var randomAdjective = parseInt(Math.random() * adjectives.length);
-  var randomNoun = parseInt(Math.random() * nouns.length);
+  var randomAdjective = parseInt(Math.random() * adjLength);
+  var randomNoun = parseInt(Math.random() * nounsLength);
   var name = "The " + adjectives[randomAdjective].capitalize() + " " + nouns[randomNoun].capitalize();
   return name;
 }
@@ -518,7 +521,7 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-//Change for loop to only generate 20 background pizzas. We don't need 200 pizzas! 
+//Change for loop to only generate 20 background pizzas. We don't need 200 pizzas!
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
