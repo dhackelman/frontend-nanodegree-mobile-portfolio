@@ -1,34 +1,24 @@
 ## Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+This project was all about the need for SPEED. I started by learning how to use ngrok to host the pages so that I could test PageSpeed. This was not an easy task, but I perservered and got it going. Command line is getting easier to work with. 
 
-To get started, check out the repository, inspect the code,
+###Part 1: Optimize PageSpeed Insights score for index.html
 
-### Getting started
+1. Started by reading and re-reading (http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
 
-####Part 1: Optimize PageSpeed Insights score for index.html
+2. After installing/running grunt, I created the necessary package.json and Gruntfile.js files. The next step was to use ngrok to test my PageSpeeds. Using my command line I hosted index.html on my local server. I then initiated ngrok through the command line which allowed me to test index.html on pagespeeds with a forwarding port address.
 
-Some useful tips to help you get started:
+3. My first PageSpeeds read-out had the following suggestions: 
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
+	1) Optimize images: this was the largest time/speed suck for my site. It recommended that I re-size or somehow optimize my images to speed delivery of the webpage. This made sense since we were dealing with multiple image files (both jpg and png). 
+		Thanks to these sites for the help: 
+			(https://mijingo.com/blog/optimizing-images-with-grunt-gulp)   and 
+			(https://github.com/gruntjs/grunt-contrib-uglify/blob/master/docs/uglify-examples.md)
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
+	2) PageSpeeds said I should Part of the tutorial also had me "uglify" my js and minify HTML and css. That helped speed things up as well.
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
+4. After more testing, tweaking, and moderate tantruming, my 
 
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ngrok http 8080
-  ```
-
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
-
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
