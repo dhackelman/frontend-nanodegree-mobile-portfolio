@@ -32,23 +32,22 @@ module.exports = function(grunt) {
 		   }
 		},
 
-		imagemin: {
-			dynamic: {                         
-			      files: [{
-			        expand: true,                  
-			        cwd: 'img',                   
-			        src: ['**/*.{png,jpg,gif}'],   
-			        dest: 'dist'                  
-			      }]
-			    }
+	
+    	inlinecss: {
+	        main: {
+	            options: {
+	            },
+	            files: {
+	                'out.html': 'in.html'
+	            }
+	        }
+    }
+});
 
-		}
-	});
-
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-inlinecss');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
-	grunt.registerTask('default', ['imagemin', 'uglify', 'htmlmin', 'cssmin']);
+	grunt.registerTask('default', ['uglify', 'htmlmin', 'cssmin', 'inlinecss']);
 
 };
