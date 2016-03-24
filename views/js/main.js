@@ -399,7 +399,6 @@ var pizzaElementGenerator = function(i) {
 };
 
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
-// resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
@@ -425,6 +424,8 @@ var resizePizzas = function(size) {
 
 
   // Iterates through pizza elements on the page and changes their widths
+  //Changed code to match solution from Cameron's video in class
+  //This solution focuses on optimizing the for loop and eliminating significant layout changes
   function changePizzaSizes(size) {
     var newWidth;
 
@@ -490,12 +491,15 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+//Create itemsLength variable to optimize for loop and remove calculation
+//i++ to i+=1 as  way to further optimize calculation
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
+  var itemsLength = items.length;
+  for (var i = 0; i < itemsLength; i+=1) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
@@ -514,10 +518,11 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
+//Change for loop to only generate 20 background pizzas. We don't need 200 pizzas! 
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 20; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
