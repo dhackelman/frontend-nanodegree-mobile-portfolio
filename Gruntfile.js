@@ -1,53 +1,52 @@
 module.exports = function(grunt) {
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
 
-		uglify: {
-			build: {
-				src: 'js/perfmatters.js',
-				dest: 'js/permatters.min.js'
-				},
+  // Project configuration.
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
 
-		},
+    imagemin: {
+		dynamic: {
+		files: [{
+			expand: true,
+			cwd: 'src/img/',
+			src: ['**/*.{png,jpg,gif}'],
+			dest: 'dist/img/'
+		}]
+		}   
+    },
 
-		cssmin: {
-		   dist: {
-		      files: {
-		         'dist/css/style.min.css': ['css/style.css']
-		      }
-		  }
-		}, 
+    imagemin: {
+		dynamic: {
+		files: [{
+			expand: true,
+			cwd: 'src/views/images/',
+			src: ['**/*.{png,jpg,gif}'],
+			dest: 'dist/views/images/'
+		}]
+		}   
+    },
 
-		htmlmin: {
-		   dist: {
-		      options: {
-		         removeComments: true,
-		         collapseWhitespace: true
-		      },
-		      files: [{
-		         expand: true,
-		         src: 'index.html',
-		         dest: 'dist/'
-		      }]
-		   }
-		},
+    uglify: {
+      build: {
+        src: 'src/js/perfmatters.js',
+        dest: 'dist/js/perfmatters.min.js'
+      }
+    }, 
+    uglify: {
+      build: {
+        src: 'src/views/js/main.js',
+        dest: 'dist/views/js/main.min.js'
+      }
+    }, 
 
-	
-    	inlinecss: {
-	        main: {
-	            options: {
-	            },
-	            files: {
-	                'out.html': 'in.html'
-	            }
-	        }
-    }
-});
 
-	grunt.loadNpmTasks('grunt-contrib-inlinecss');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-htmlmin');
-	grunt.registerTask('default', ['uglify', 'htmlmin', 'cssmin', 'inlinecss']);
+  });
+
+  // Load the plugin that provides the "uglify" task.
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
+
+  // Default task(s).
+  grunt.registerTask('default', ['uglify', 'uglify', 'imagemin']);
 
 };
