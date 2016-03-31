@@ -6,6 +6,8 @@
     "grunt-contrib-imagemin": "^1.0.0",
     "grunt-contrib-jshint": "~0.6.3",
     "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt-contrib-uglify": "~0.2.2"
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-minify-html": "^2.0.0",
+    "htmlmin": "0.0.6"
   }
 }
