@@ -5,18 +5,10 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     imagemin: {
-		dynamic: {
-		files: [{
-			expand: true,
-			cwd: 'src/img/',
-			src: ['**/*.{png,jpg,gif}'],
-			dest: 'dist/img/'
-		}]
-		}   
-    },
-
-    imagemin: {
-		dynamic: {
+		jpg: {
+			options: {
+				progressive: true
+			},
 		files: [{
 			expand: true,
 			cwd: 'src/views/images/',
