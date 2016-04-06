@@ -4,6 +4,7 @@ var gulp = require('gulp'),
 	imagemin = require('gulp-imagemin');
 	inlineCss = require('gulp-inline-css');
 	htmlmin = require('gulp-htmlmin');
+	cleanCSS = require('gulp-clean-css');
 
 //Scripts Task
 //Uglifies
@@ -11,7 +12,7 @@ var gulp = require('gulp'),
 gulp.task('scripts', function() {
 	gulp.src('src/js/*.js')
 	.pipe(uglify())
-	.pipe(gulp.dest('dist/minjs'))
+	.pipe(gulp.dest('dist/js'))
 });
 
 
@@ -40,6 +41,15 @@ gulp.task('minifyHTML', function() {
 
 gulp.task('watch', function() {
 	gulp.watch('src/js/*.js', ['scripts']);
+});
+
+//Clean CSS
+//minify CSS file
+
+gulp.task('minify-css', function () {
+	gulp.src('src/css/*.css')
+	.pipe(cleanCSS({compatibility: 'ie8'}))
+	.pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('default', ['scripts', 'image', 'minifyHTML', 'watch']);
