@@ -3,6 +3,7 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify');
 	imagemin = require('gulp-imagemin');
 	inlineCss = require('gulp-inline-css');
+	htmlmin = require('gulp-htmlmin');
 
 //Scripts Task
 //Uglifies
@@ -26,9 +27,13 @@ gulp.task('image', function(){
 });
 
 
-//Inline CSS
+//minify HTML
 //chyeah
-
+gulp.task('minifyHTML', function() {
+	gulp.src('src/*html')
+	.pipe(htmlmin({collapseWhitespace: true}))
+	.pipe(gulp.dest('dist'))
+});
 
 //Watch Task
 //Watches JS
@@ -37,4 +42,4 @@ gulp.task('watch', function() {
 	gulp.watch('src/js/*.js', ['scripts']);
 });
 
-gulp.task('default', ['scripts', 'styles', 'watch']);
+gulp.task('default', ['scripts', 'image', 'minifyHTML', 'watch']);
