@@ -411,13 +411,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small"; //uses getElementById selector to increase speed
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium"; //uses getElementById selector to increase speed
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";  //uses getElementById selector to increase speed
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -447,9 +447,13 @@ var resizePizzas = function(size) {
         console.log("bug in sizeSwitcher");
     }
 
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
-
-    for (var i = 0; i < randomPizzas.length; i++) {
+//use getElementByClass to improve speed
+// remove the randomPizzas.length calculation from within the for loop and create variable outside loop
+//Call the .length within for loop to increase speed and reduce number of calculations
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer"); 
+    var randomPizzaLength = randomPizzas.length;
+    console.log(randomPizzaLength); //console check to make sure it is calulating length correctly.
+    for (var i = 0; i < randomPizzaLength; i++) {
       randomPizzas[i].style.width = newWidth + '%';
     }
   }
@@ -466,10 +470,9 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-//I reduced the # of pizzas having to be created
-
-for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
+// Declare pizzasDiv outside for loop to avoid making multiple DOM calls
+var pizzasDiv = document.getElementById("randomPizzas");
+for (var i = 2; i < 500; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -504,10 +507,12 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover'); //use getElementsByClassName API to increase speed
   var itemsLength = items.length;
+  //create var = top to prevent the DOM brom being touched in every iteration
+  var top = document.body.scrollTop / 1250;
   for (var i = 0; i < itemsLength; i+=1) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = Math.sin((top) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -525,19 +530,21 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
-//Change for loop to only generate 20 background pizzas. We don't need 200 pizzas!
+// Change document.querySelector to use getElementById
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 20; i++) {
-    var elem = document.createElement('img');
+  var movingPizzas = document.getElementById("movingPizzas1");
+  var elem;
+  for (var i = 0; i < 24; i++) {
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
