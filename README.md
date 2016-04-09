@@ -19,23 +19,30 @@ This project was all about the need for SPEED. I started by learning how to use 
 
 ####3. My first PageSpeeds read-out had the following suggestions: 
 
-	#####a) Optimize images: this was the largest time/speed suck for my site. It recommended that I re-size or somehow optimize my images to speed delivery of the webpage. This made sense since we were dealing with multiple image files (both jpg and png). 
+	 a) Optimize images: this was the largest time/speed suck for my site. It recommended that I re-size or somehow optimize my images to speed delivery of the webpage. This made sense since we were dealing with multiple image files (both jpg and png). 
 		Thanks to these sites for the help: 
 			(https://mijingo.com/blog/optimizing-images-with-grunt-gulp)   and 
 			(https://github.com/gruntjs/grunt-contrib-uglify/blob/master/docs/uglify-examples.md) and 
 			(compressjpeg.com)
 
-	#####b) PageSpeeds said I should Part of the tutorial also had me "uglify" my js and minify HTML and css. That helped speed things up as well. Check out  my _gulpfile.js_ for more info. 
+	 b) PageSpeeds said I should Part of the tutorial also had me "uglify" my js and minify HTML and css. That helped speed things up as well. Check out  my _gulpfile.js_ for more info. 
 
 ####4. After more testing, tweaking, and moderate tantruming, I decided to opt for gulp
-	#####a)  Used gulp to watch files, minify html, uglify js, and minify css files. 
+	 a)  Used gulp to watch files, minify html, uglify js, and minify css files. 
 
-	#####b) Gulp is dope but wouldn't optimize images much, had to use compressjpeg.com to get it from 2.4mB to 42kB. 
+	 b) Gulp is dope but wouldn't optimize images much, had to use compressjpeg.com to get it from 2.4mB to 42kB. 
 
 
 ####Part 2: Optimize Frames per Second in pizza.html and main.js
 
-	#####a) most of the changes I made involved trying to reduce the number of calculations the page was making with its _for loops_ and the _document.getElementId_. Instead of getting all elements, I specified element IDs. I also created variables that would store information instead of having to calculate things like _.length_ within the for loops
-	#####b) Changed the pizza slider and implemented a switch statement to change pizza sizes. We didn't need to figure out a new size when the use clicks the slider. There are only 3 possibilities, so I only offered 3 size options. This reduces the style calculation. 
+	 a) most of the changes I made involved trying to reduce the number of calculations the page was making with its _for loops_ and the _document.getElementId_. Instead of getting all elements, I specified element IDs. I also created variables that would store information instead of having to calculate things like _.length_ within the for loops
+
+	 b) Changed the pizza slider and implemented a switch statement to change pizza sizes. We didn't need to figure out a new size when the use clicks the slider. There are only 3 possibilities, so I only offered 3 size options. This reduces the style calculation. 
+
+	 c) made several changes to for loops that were using document.querySelectorAll and changed them to either document.getElementByID of document.getElementsByClassName
+
+	 d) whenI accessed DOM elements using the selctors above, I did so using local variables which I placed outside of the for loops
+
+	 e) 
 
 T
