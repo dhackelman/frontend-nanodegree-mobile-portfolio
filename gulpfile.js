@@ -1,7 +1,6 @@
 // include gulp
 var gulp = require('gulp'), 
 	uglify = require('gulp-uglify');
-	imagemin = require('gulp-imagemin');
 	inlineCss = require('gulp-inline-css');
 	htmlmin = require('gulp-htmlmin');
 	cleanCSS = require('gulp-clean-css');
@@ -10,28 +9,16 @@ var gulp = require('gulp'),
 //Uglifies
 
 gulp.task('scripts', function() {
-	gulp.src('src/js/*.js')
+	gulp.src('src/**/*.js')
 	.pipe(uglify())
-	.pipe(gulp.dest('dist/js'))
-});
-
-
-//Images Task
-//Compress
-gulp.task('image', function(){
-	gulp.src('src/views/images/*')
-		.pipe(imagemin({
-			progressive: true, 
-			optimizationLevel: 7
-		}))
-		.pipe(gulp.dest('dist/views/images'));
+	.pipe(gulp.dest('dist'))
 });
 
 
 //minify HTML
 //chyeah
 gulp.task('minifyHTML', function() {
-	gulp.src('src/*html')
+	gulp.src('src/**/*.html')
 	.pipe(htmlmin({collapseWhitespace: true}))
 	.pipe(gulp.dest('dist'))
 });
@@ -40,16 +27,15 @@ gulp.task('minifyHTML', function() {
 //Watches JS
 
 gulp.task('watch', function() {
-	gulp.watch('src/js/*.js', ['scripts']);
+	gulp.watch('src/**/*.js', ['scripts']);
 });
 
 //Clean CSS
 //minify CSS file
-
 gulp.task('minify-css', function () {
-	gulp.src('src/css/*.css')
+	gulp.src('src/**/*.css')
 	.pipe(cleanCSS({compatibility: 'ie8'}))
-	.pipe(gulp.dest('dist/css'));
+	.pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['scripts', 'image', 'minifyHTML', 'watch']);
+gulp.task('default', ['scripts', 'minifyHTML', 'watch', 'minify-css']);
