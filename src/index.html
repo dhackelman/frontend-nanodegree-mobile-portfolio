@@ -33,7 +33,18 @@
       <div class="hero">
         <strong>I love web development!</strong> This is a template for a simple portfolio. I decided to use it to showcase a few Udacity courses I've taken and some teaching work, but you can use it to showcase any kind of project that you want the world to see :) <br> Contact me: me@email.com
       </div>
-
+<!--Adding in the recommended css load from google dev recommendations-->
+    <script>
+      var cb = function() {
+        var l = document.createElement('link'); l.rel = 'stylesheet';
+        l.href = 'css/style.css';
+        var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+          webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(cb);
+      else window.addEventListener('load', cb);
+    </script>
       <div class="content">
         <ul>
           <li>
@@ -72,18 +83,6 @@
       // Optional TODO: replace with your Google Analytics profile ID.
       ga('create', 'UA-XXXX-Y');
       ga('send', 'pageview');
-    </script>
-    <!--Adding in the recommended css load from google dev recommendations-->
-    <script>
-      var cb = function() {
-        var l = document.createElement('link'); l.rel = 'stylesheet';
-        l.href = 'css/style.css';
-        var h = document.getElementsByTagName('head')[0]; h.parentNode.insertBefore(l, h);
-      };
-      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-          webkitRequestAnimationFrame || msRequestAnimationFrame;
-      if (raf) raf(cb);
-      else window.addEventListener('load', cb);
     </script>
     <script async src="http://www.google-analytics.com/analytics.js"></script>
     <script async src="js/perfmatters.js"></script>
