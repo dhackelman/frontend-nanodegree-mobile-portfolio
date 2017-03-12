@@ -5,7 +5,7 @@
 ####Measure the PageSpeed @ [this site](https://developers.google.com/speed/pagespeed/insights/)
 ####Use DevTools in chrome to measure the fps and to check out the speed of the pizza changer on pizza.html
 
-
+This Project was built and completed in 2015-2016 as part of my independent study with Udacity Fron End Nanodegree program. 
 
 ## Website Performance Optimization Project Narrative
 
@@ -45,4 +45,3 @@ This project was all about the need for SPEED. I started by learning how to use 
 
 	 e) 
 
-T
